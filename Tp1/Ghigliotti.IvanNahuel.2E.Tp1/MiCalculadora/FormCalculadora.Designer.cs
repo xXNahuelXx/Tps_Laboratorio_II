@@ -78,7 +78,7 @@
             this.lblResultado.Location = new System.Drawing.Point(12, 12);
             this.lblResultado.Name = "lblResultado";
             this.lblResultado.Size = new System.Drawing.Size(462, 47);
-            this.lblResultado.TabIndex = 3;
+            this.lblResultado.TabIndex = 8;
             this.lblResultado.Text = "0";
             this.lblResultado.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
@@ -89,7 +89,8 @@
             this.lstOperaciones.Location = new System.Drawing.Point(480, 12);
             this.lstOperaciones.Name = "lstOperaciones";
             this.lstOperaciones.Size = new System.Drawing.Size(223, 259);
-            this.lstOperaciones.TabIndex = 4;
+            this.lstOperaciones.TabIndex = 9;
+            this.lstOperaciones.TabStop = false;
             // 
             // btnOperar
             // 

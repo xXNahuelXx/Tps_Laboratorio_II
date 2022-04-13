@@ -13,12 +13,19 @@ namespace MiCalculadora
 {
     public partial class FormCalculadora : Form
     {
-        
+        /// <summary>
+        /// Constructor por defecto de FormCalculadora.
+        /// </summary>
         public FormCalculadora()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Evento del Form que al iniciar la aplicacion hace uso del metodo Limpiar deshabilita el uso de los botones de conversion.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormCalculadora_Load(object sender, EventArgs e)
         {
             this.Limpiar();
@@ -26,6 +33,9 @@ namespace MiCalculadora
             this.btnConvertirADecimal.Enabled = false;
         }
 
+        /// <summary>
+        /// Limpia los textBox y label de la pantalla, ademas inhabilita los botones de conversion.
+        /// </summary>
         private void Limpiar()
         {
             this.txtNumero1.Text = string.Empty;
@@ -36,11 +46,24 @@ namespace MiCalculadora
             this.btnConvertirADecimal.Enabled = false;
         }
 
+        // <summary>
+        /// Hace uso del metodo Limpiar cuando se preciona este boton.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             this.Limpiar();
         }
 
+        /// <summary>
+        /// Se hace uso del metodo Operar de la clase Calculadora para que realice una operacion matematica entre dos numeros. 
+        /// Tambien se le pasa el operador para que sepa que operacion realizar.
+        /// </summary>
+        /// <param name="numero1">Numero que se recibe mediante el txtOperando1</param>
+        /// <param name="numero2">Numero que se recibe mediante el txtOperando2</param>
+        /// <param name="operador">Operador que se recibe mediante el cmbOperador</param>
+        /// <returns>Retorna el resultado de la operacion realizada.</returns>
         private static double Operar(string numero1, string numero2, string operador)
         {
             char auxOperador;
@@ -55,11 +78,21 @@ namespace MiCalculadora
             return resultado;
         }
 
+        /// <summary>
+        /// Al apretar el boton pregunta al usuario si quiere salir de la aplicacion.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Boton que hace uso del metodo para convertir el numero recibido del label en binario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConvertirABinario_Click(object sender, EventArgs e)
         {
             this.btnConvertirABinario.Enabled = false;
@@ -67,6 +100,11 @@ namespace MiCalculadora
             this.btnConvertirADecimal.Enabled = true;
         }
 
+        /// <summary>
+        /// Boton que hace uso del metodo para convertir el numero recibido del label en decimal.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConvertirADecimal_Click(object sender, EventArgs e)
         {
             this.btnConvertirADecimal.Enabled = false;
@@ -74,6 +112,11 @@ namespace MiCalculadora
             this.btnConvertirABinario.Enabled = true;
         }
 
+        /// <summary>
+        /// Evento del Form que al querer cerrar la aplicacion pregunte al usuario si realmente  quiere hacerlo. Si asi lo desea, se cierra la aplicacion.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormCalculadora_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("¿Seguro de querer salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
@@ -86,6 +129,11 @@ namespace MiCalculadora
             }
         }
 
+        /// <summary>
+        /// Hace uso del metodo Operar de la clase FormCalculadora, el resultado lo muestra a treaves del Label y guarda la operacion realizada en el listBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOperar_Click(object sender, EventArgs e)
         {
             double resultado = FormCalculadora.Operar(this.txtNumero1.Text, this.txtNumero2.Text, cmbOperador.SelectedItem.ToString());
@@ -109,11 +157,6 @@ namespace MiCalculadora
             if (this.lblResultado.Text != "0") //Valida que si el label no es 0, habilite el boton de conversion, ya que si el valor es 0, no se puede convertir en binario.
             {
                 this.btnConvertirABinario.Enabled = true;
-            }
-            if (this.lblResultado.Text == double.MinValue.ToString()) //Valida que si en el label recibe un MinValue producto del intento de una division por 0, muestre por pantalla un mensaje mas amigable al usuario.
-            {
-                this.lblResultado.Text = string.Empty;
-                MessageBox.Show("No se puede dividir por 0", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
