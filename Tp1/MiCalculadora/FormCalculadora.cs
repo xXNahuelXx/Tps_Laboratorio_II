@@ -158,10 +158,9 @@ namespace MiCalculadora
             {
                 this.btnConvertirABinario.Enabled = true;
             }
-            else
-            {
-                lstOperaciones.Items.Add($"{this.txtNumero1.Text} {cmbOperador.SelectedItem.ToString()} {this.txtNumero2.Text} = {resultado}"); //En caso de que todo esté correcto, agrega al listBox la operacion hecha.
-            }
+            
+            lstOperaciones.Items.Add($"{this.txtNumero1.Text} {cmbOperador.SelectedItem.ToString()} {this.txtNumero2.Text} = {resultado}"); //En caso de que todo esté correcto, agrega al listBox la operacion hecha.
+ 
         }
     }
 }

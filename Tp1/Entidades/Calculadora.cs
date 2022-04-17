@@ -17,27 +17,20 @@ namespace Entidades
         /// <returns>Retorna el resultado de determinada operacion</returns>
         public static double Operar(Operando num1, Operando num2, char operador)
         {
-            double resultado;
-
             switch (ValidarOperador(operador))
             {
                 case '+':
-                    resultado = num1 + num2;
-                    break;
+                    return num1 + num2;
                 case '-':
-                    resultado = num1 - num2;
-                    break;
+                    return num1 - num2;
+
                 case '*':
-                    resultado = num1 * num2;
-                    break;
+                    return num1 * num2;
+
                 case '/':
-                    resultado = num1 / num2;
-                    break;
-                default:
-                    resultado = num1 + num2;
-                    break;
+                    return num1 / num2;
             }
-            return resultado;
+            return num1+num2;
         }
 
         /// <summary>

@@ -54,15 +54,12 @@ namespace Entidades
         /// <returns>Retorna 0 en caso de que el numero recibido no sea de tipo numerico, si este es correcto lo parsea double y lo devuelve.</returns>
         private double ValidarOperando(string strNumero)
         {
-            foreach (char item in strNumero)
+            double numeroAuxiliar;
+            if (double.TryParse(strNumero, out numeroAuxiliar))
             {
-                if (item < '0' || item > '9')
-                {
-                    return 0;
-                }
+                return numeroAuxiliar;
             }
-            double.TryParse(strNumero.Replace('.', ','), out numero); //Parsea y remplaza el punto (.) por la coma (,).
-            return numero;
+            return 0;
         }
 
         /// <summary>
