@@ -11,15 +11,23 @@ namespace Entidades
     /// </summary>
     public abstract class Vehiculo
     {
+        /// <summary>
+        /// Enumerados de las marcas de los vehiculos, con valor de 0 a 6 por defecto.
+        /// </summary>
         public enum EMarca
         {
             Chevrolet, Ford, Renault, Toyota, BMW, Honda, HarleyDavidson
         }
+
+        /// <summary>
+        /// Enumerados de los tamaños de los vehiculos, con valor por defecto de 0 a 2.
+        /// </summary>
         public enum ETamanio
         {
             Chico, Mediano, Grande
         }
 
+        //Atributos
         private string chasis;
         private ConsoleColor color;
         private EMarca marca;
@@ -37,7 +45,7 @@ namespace Entidades
         protected abstract ETamanio Tamanio { get;}
 
         /// <summary>
-        /// Publica todos los datos del Vehiculo.
+        /// Realiza el casteo explicito y publica todos los datos del Vehiculo.
         /// </summary>
         /// <returns></returns>
         public virtual string Mostrar()
@@ -45,6 +53,10 @@ namespace Entidades
             return (string)this;
         }
 
+        /// <summary>
+        /// Realiza la sobracarga del tipo de dato string para que muestre los datos del vehiculo cuando se requiera castear.
+        /// </summary>
+        /// <param name="p">Recbe un vehiculo para luego ser mostrado</param>
         public static explicit operator string(Vehiculo p)
         {
             StringBuilder sb = new StringBuilder();

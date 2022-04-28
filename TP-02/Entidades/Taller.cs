@@ -8,21 +8,34 @@ namespace Entidades
     /// </summary>
     public sealed class Taller
     {
+        /// <summary>
+        /// Enumerado que setea por defecto los tipos de vehiculos con valor por defecto de 0 a 3.
+        /// </summary>
         public enum ETipo
         {
             Moto, Automovil, Camioneta, Todos
         }
 
+        //Atributos
         private int espacioDisponible;
         private List<Vehiculo> vehiculos;
 
 
 
         #region "Constructores"
+        /// <summary>
+        /// Constructor privado que instancia una lista de vehiculos.
+        /// </summary>
         private Taller()
         {
             this.vehiculos = new List<Vehiculo>();
         }
+
+        /// <summary>
+        /// Constructor que llama a la sobrecarga del constructor privado para que setee una lista de vevhiculos.
+        /// Ademas setea el espacio dispobible.
+        /// </summary>
+        /// <param name="espacioDisponible">Espacio disponible a asignar</param>
         public Taller(int espacioDisponible) : this()
         {
             this.espacioDisponible = espacioDisponible;
