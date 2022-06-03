@@ -14,6 +14,7 @@ namespace Entidades
         public enum ETipo
         {
             Moto, Automovil, Camioneta, Todos
+            //Ciclomotor,Sedan,SUV,Todos
         }
 
         //Atributos
@@ -93,6 +94,30 @@ namespace Entidades
                     default:
                         sb.AppendLine(v.Mostrar());
                         break;
+                        //}
+                        //switch (tipo)
+                        //{
+                        //    case ETipo.SUV:
+                        //        if (v is Suv)
+                        //        {
+                        //            sb.AppendLine(v.Mostrar());
+                        //        }
+                        //        break;
+                        //    case ETipo.Ciclomotor:
+                        //        if (v is Ciclomotor)
+                        //        {
+                        //            sb.AppendLine(v.Mostrar());
+                        //        }
+                        //        break;
+                        //    case ETipo.Sedan:
+                        //        if (v is Sedan)
+                        //        {
+                        //            sb.AppendLine(v.Mostrar());
+                        //        }
+                        //        break;
+                        //    default:
+                        //        sb.AppendLine(v.Mostrar());
+                        //        break;
                 }
             }
 
