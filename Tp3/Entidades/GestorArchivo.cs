@@ -5,14 +5,28 @@ using System.Xml.Serialization;
 
 namespace Entidades
 {
+    /// <summary>
+    /// Clase generica para manejar distintos tipos en los archivos.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public static class GestorArchivo<T>
     {
         static string rutaBase;
+
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
         static GestorArchivo()
         {
-            GestorArchivo<T>.rutaBase = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            GestorArchivo<T>.rutaBase = AppDomain.CurrentDomain.BaseDirectory;
         }
 
+        /// <summary>
+        /// Metodo que serializa el dato recibido. Lanza una excepcion si no pudo guardar el archivo.
+        /// </summary>
+        /// <param name="nombreArchivo"></param>
+        /// <param name="dato"></param>
+        /// <exception cref="GuardarException"></exception>
         public static void Serializar(string nombreArchivo, T dato)
         {
             try
@@ -30,6 +44,12 @@ namespace Entidades
 
         }
 
+        /// <summary>
+        /// Mertodo que deserializa el archivo. Lanza una excepcion si no pudo traer el archivo.
+        /// </summary>
+        /// <param name="nombreArchivo"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static T Deserializar(string nombreArchivo)
         {
             try
@@ -47,6 +67,13 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Metodo para generar un archivo txt que guarde el historial de los movimientos de los clientes con sus datos.
+        /// </summary>
+        /// <param name="nombreArchivo"></param>
+        /// <param name="info"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static bool HistorialClientes(string nombreArchivo, string info)
         {
             try

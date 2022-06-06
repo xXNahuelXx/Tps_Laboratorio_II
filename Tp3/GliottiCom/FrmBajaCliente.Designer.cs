@@ -126,6 +126,7 @@
             // 
             // cmbBajaPlan
             // 
+            this.cmbBajaPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBajaPlan.FormattingEnabled = true;
             this.cmbBajaPlan.Items.AddRange(new object[] {
             "Sin Plan",
@@ -139,6 +140,7 @@
             // 
             // cmbBajaCompania
             // 
+            this.cmbBajaCompania.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBajaCompania.FormattingEnabled = true;
             this.cmbBajaCompania.Items.AddRange(new object[] {
             "Claro",

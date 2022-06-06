@@ -13,9 +13,15 @@ namespace GliottiCom
         public FrmModificarCliente()
         {
             InitializeComponent();
-            clientes = GestorArchivo<List<Cliente>>.Deserializar($"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\\ListaDeClientesSerializada.xml");
+            //Levanto el archvio.
+            clientes = GestorArchivo<List<Cliente>>.Deserializar($"{AppDomain.CurrentDomain.BaseDirectory}\\ListaDeClientesSerializada.xml");
         }
 
+        /// <summary>
+        /// Deshabilito todos los controles para que no pueda modificar nada hasta que no encuentre al cliente.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmModificarCliente_Load(object sender, EventArgs e)
         {
             this.txtModNombre.Enabled = false;
@@ -28,9 +34,15 @@ namespace GliottiCom
             this.txtModMail.Enabled = false;
             this.btnGuardarCambios.Enabled = false;
             this.btnModificar.Enabled = false;
-
+            this.lblDniError.Visible = false;
+            this.lblCelularError.Visible = false;
         }
 
+        /// <summary>
+        /// Busca al cliente por id, una vez que lo encuentra, me guardo el indice para poder eliminarlo.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
             foreach (Cliente cliente in this.clientes)
@@ -69,6 +81,11 @@ namespace GliottiCom
             this.clientes.Remove(clientes[indiceAuxiliar]);
         }
 
+        /// <summary>
+        /// Boton que es habilitado una vez que se encontró al cliente, y este a su vez habilita los campos a modificar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModificar_Click(object sender, EventArgs e)
         {
             this.txtModNombre.Enabled = true;
@@ -84,6 +101,12 @@ namespace GliottiCom
 
         }
 
+        /// <summary>
+        /// Elimina al cliente encontrado y crea uno nuevo con los datos modificado, esta resuelto de esta manera
+        /// debido a un error al tratar de appendear.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGuardarCambios_Click(object sender, EventArgs e)
         {
             PlanMovil planAux = PlanMovil.sinPlan;
@@ -146,6 +169,11 @@ namespace GliottiCom
             }
         }
 
+        /// <summary>
+        /// Interfaz implementada para que guarde el historial del movimiento del cliente, en este caso al ser una modificacion
+        /// tiene un mensaje personalizado para la modificacion, con la fecha en la que se generó el movimiento. 
+        /// </summary>
+        /// <param name="cliente"></param>
         public void ActualizarInfoClientes(Cliente cliente)
         {
             StringBuilder sbInfo = new StringBuilder();

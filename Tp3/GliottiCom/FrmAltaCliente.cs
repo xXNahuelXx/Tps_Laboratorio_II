@@ -14,7 +14,8 @@ namespace GliottiCom
         {
             InitializeComponent();
             //clientes = new List<Cliente>();
-            clientes = GestorArchivo<List<Cliente>>.Deserializar($"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\\ListaDeClientesSerializada.xml");
+
+            clientes = GestorArchivo<List<Cliente>>.Deserializar($"{AppDomain.CurrentDomain.BaseDirectory}\\ListaDeClientesSerializada.xml");
         }
         public List<Cliente> Clientes
         {
@@ -30,6 +31,12 @@ namespace GliottiCom
             this.lblCelularError.Visible = false;
         }
 
+        /// <summary>
+        /// Al confirmar se cargan todos los datos de los textbox en el constructor del cliente para crearlo.
+        /// En caso de errores, hay excepciones controladas, como la del dni, o celular erroneo.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             PlanMovil planAux = PlanMovil.sinPlan;
@@ -93,6 +100,11 @@ namespace GliottiCom
             }
         }
 
+        /// <summary>
+        /// Interfaz implementada para que guarde el historial del movimiento del cliente, en este caso al ser un alta
+        /// tiene un mensaje personalizado para el alta, con la fecha en la que se generó el movimiento. 
+        /// </summary>
+        /// <param name="cliente"></param>
         public void ActualizarInfoClientes(Cliente cliente)
         {
             StringBuilder sbInfo = new StringBuilder();

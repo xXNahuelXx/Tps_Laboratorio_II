@@ -25,7 +25,7 @@ namespace GliottiCom
 
         private void FrmListaClientes_Load(object sender, EventArgs e)
         {
-            List<Cliente> clientes = GestorArchivo<List<Cliente>>.Deserializar($"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\\ListaDeClientesSerializada.xml");
+            List<Cliente> clientes = GestorArchivo<List<Cliente>>.Deserializar($"{AppDomain.CurrentDomain.BaseDirectory}\\ListaDeClientesSerializada.xml");
             foreach (Cliente item in clientes)
             {
                 this.rtbListadoClientes.Text += item.MostrarDatosCliente();

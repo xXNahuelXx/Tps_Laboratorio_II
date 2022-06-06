@@ -101,6 +101,7 @@
             // 
             // cmbModPlan
             // 
+            this.cmbModPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbModPlan.FormattingEnabled = true;
             this.cmbModPlan.Items.AddRange(new object[] {
             "Sin Plan",
@@ -114,6 +115,7 @@
             // 
             // cmbModCompania
             // 
+            this.cmbModCompania.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbModCompania.FormattingEnabled = true;
             this.cmbModCompania.Items.AddRange(new object[] {
             "Claro",

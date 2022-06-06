@@ -30,9 +30,14 @@ namespace GliottiCom
             this.cmbBajaPlan.Enabled = false;
             this.txtBajaDireccion.Enabled = false;
             this.txtBajaMail.Enabled = false;
-            clientes = GestorArchivo<List<Cliente>>.Deserializar($"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\\ListaDeClientesSerializada.xml");
+            clientes = GestorArchivo<List<Cliente>>.Deserializar($"{AppDomain.CurrentDomain.BaseDirectory}\\ListaDeClientesSerializada.xml");
         }
 
+        /// <summary>
+        /// Metodo que busca a un cliente por documento.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
             foreach (Cliente cliente in this.clientes)
@@ -68,6 +73,11 @@ namespace GliottiCom
             }
         }
 
+        /// <summary>
+        /// Metodo que elimina a un cliente.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Cliente clienteAux = null;
@@ -88,6 +98,11 @@ namespace GliottiCom
             }
         }
 
+        /// <summary>
+        /// Interfaz implementada para que guarde el historial del movimiento del cliente, en este caso al ser una baja
+        /// tiene un mensaje personalizado para la baja, con la fecha en la que se generó el movimiento. 
+        /// </summary>
+        /// <param name="cliente"></param>
         public void ActualizarInfoClientes(Cliente cliente)
         {
             StringBuilder sbInfo = new StringBuilder();

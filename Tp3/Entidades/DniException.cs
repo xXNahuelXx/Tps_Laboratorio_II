@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    /// <summary>
+    /// Clase DniException que será lanzada cuando el dni ingresado no cumpla con los requisitos.  
+    /// </summary>
     public class DniException : Exception
     {
-        //Cuando se busque por un dni que no exista
-        //Cuando se agregue un empleado con un numero de dni > 8 || < 8
         public DniException(string message) : base(message)
         {
 
